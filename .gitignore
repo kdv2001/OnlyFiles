@@ -1,0 +1,14 @@
+/build/
+/cmake-build-*
+/.idea
+/CMakeCache.txt
+*.out
+*.cmake
+/Makefile
+/Testing
+/CMakeFiles
+/src/CMakeFiles
+/src/tests/*.cmake
+/src/tests/*.CmakeCache.txt
+/src/tests/*.out
+/src/tests/CMakeFiles
