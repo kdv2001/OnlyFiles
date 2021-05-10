@@ -20,10 +20,10 @@
 class Json {
 private:
     int status;
-    QJsonObject record_Object;
 public:
     QByteArray JSon_request(int file_Size, int part_size, QString file_name);
     QByteArray JSon_second_request(int part_num, QString token);
+    QByteArray JSon_parse();
     Json(size_t stat);
     //~Json();
 };

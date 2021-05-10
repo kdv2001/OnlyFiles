@@ -5,6 +5,7 @@ Json::Json(size_t stat) {
 }
 
 QByteArray Json::JSon_request(int file_Size, int part_size, QString file_name) {
+    QJsonObject record_Object;
     status = 0;
     record_Object.insert("action", 11);
     record_Object.insert("file_size", file_Size);
@@ -19,8 +20,17 @@ QByteArray Json::JSon_request(int file_Size, int part_size, QString file_name) {
 }
 
 QByteArray Json::JSon_second_request(int part_num, QString token) {
+    QJsonObject record_Object;
     record_Object.insert("action", 12);
     record_Object.insert("token", token);
     record_Object.insert("part_count", part_num);
     record_Object.insert("uniq", "HASH");
+    QJsonDocument doc(record_Object);
+    QString form_json = doc.toJson(QJsonDocument::Indented);
+    QByteArray form = QJsonDocument(record_Object).toJson();
+    return form;
+}
+
+QByteArray Json::JSon_parse() {
+    return "sdsd";
 }

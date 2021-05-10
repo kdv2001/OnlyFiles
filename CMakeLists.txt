@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.16.2)
 project(OnlyFiles)
 
 set(CMAKE_CXX_STANDARD 17)
+
+add_executable(OnlyFiles main.cpp client/JSon_renderer.cpp client/JSon_renderer.h client/Manger.h client/Manger.cpp)
+
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-add_executable(helloworld JSon_render.h JSon_render.cpp main.cpp)
 target_link_libraries(OnlyFiles Qt5::Widgets)
