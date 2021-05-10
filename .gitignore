@@ -4,6 +4,8 @@
 /CMakeCache.txt
 *.out
 *.cmake
+*.user
+*.cbp
 /Makefile
 /Testing
 /CMakeFiles
