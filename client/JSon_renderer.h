@@ -11,20 +11,20 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QDir>
-
-#define OK 0; //status ok
-#define NOT_OK 1; //status ne ok
-#define REQUEST_DOWNLOAD 11; //request download file
-#define REQUEST_PART_DOWNLOAD 12; //request download part or parts file
+#include <QtNetwork/QTcpSocket>
+#include <QDebug>
 
 class Json {
 private:
-    int status;
+    int stat;
+    QByteArray form;
+
 public:
-    QByteArray JSon_request(int file_Size, int part_size, QString file_name);
-    QByteArray JSon_second_request(int part_num, QString token);
+    QByteArray JSon_request_11(int file_Size, int part_size, QString file_name);
+    QByteArray JSon_request_12(int part_num, QString token);
+    QByteArray JSon_request_13(int part_num, QString token);
     QByteArray JSon_parse();
-    Json(size_t stat);
+    Json(int status);
     //~Json();
 };
 
