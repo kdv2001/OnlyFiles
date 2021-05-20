@@ -12,17 +12,12 @@ download_window::download_window(QWidget *parent) :
 {
     Json json(1);
     ui->setupUi(this);
-    //socket = new QTcpSocket(this);
-    //connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
-    //connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
-    connect(ui->cancel_button, SIGNAL(clicked()), this, SLOT(return_window()));
 }
 
 download_window::~download_window() {
     delete ui;
 }
 
-void download_window::return_window() {
-    //parent()->setCurrentIndex(0);
-    //emit move_hole;
+void download_window::on_cancel_button_clicked() {
+    emit return_home();
 }

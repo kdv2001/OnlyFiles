@@ -42,6 +42,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QString path_to_file;
+
     QJsonArray parts_to_upload;
     QJsonArray get_file_data; //data [file number pin]
     QTcpSocket* socket;
@@ -51,8 +52,6 @@ public:
     QJsonParseError json_doc_error;
     QJsonDocument json_doc;
     download_window *load_window;
-    //QStackedWidget *stack;
-    //QStackedWidget *stacked_widget;
 
 public slots:
     void sock_ready();
@@ -62,8 +61,7 @@ public slots:
     //void send_files();
     void get_path();
     void print_get_file_data(QString data);
-    void show_widget();
-
+    void move_home();
     //void sock_write();
 
 };

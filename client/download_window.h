@@ -35,13 +35,10 @@ public:
     ~download_window();
 
 public slots:
-    void return_window();
+    void on_cancel_button_clicked(); // cancel button
 
-    //    void sock_ready();
-//    void sock_disk();
-//public signals:
-
+signals:
+    void return_home(); //signal move home
 };
-
 
 #endif //ONLYFILES_DOWNLOAD_WINDOW_H

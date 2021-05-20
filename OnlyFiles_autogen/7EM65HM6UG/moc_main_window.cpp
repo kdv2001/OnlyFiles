@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[10];
-    char stringdata0[125];
+    char stringdata0[123];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,13 +40,13 @@ QT_MOC_LITERAL(5, 55, 23), // "on_pushButton_2_clicked"
 QT_MOC_LITERAL(6, 79, 8), // "get_path"
 QT_MOC_LITERAL(7, 88, 19), // "print_get_file_data"
 QT_MOC_LITERAL(8, 108, 4), // "data"
-QT_MOC_LITERAL(9, 113, 11) // "show_widget"
+QT_MOC_LITERAL(9, 113, 9) // "move_home"
 
     },
     "MainWindow\0sock_ready\0\0sock_disk\0"
     "on_pushButton_clicked\0on_pushButton_2_clicked\0"
     "get_path\0print_get_file_data\0data\0"
-    "show_widget"
+    "move_home"
 };
 #undef QT_MOC_LITERAL
 
@@ -96,7 +96,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_pushButton_2_clicked(); break;
         case 4: _t->get_path(); break;
         case 5: _t->print_get_file_data((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 6: _t->show_widget(); break;
+        case 6: _t->move_home(); break;
         default: ;
         }
     }

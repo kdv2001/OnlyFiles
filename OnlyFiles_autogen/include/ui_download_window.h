@@ -20,25 +20,25 @@ QT_BEGIN_NAMESPACE
 class Ui_download_window
 {
 public:
-    QProgressBar *progressBar;
     QPushButton *cancel_button;
     QPushButton *pushButton_2;
+    QProgressBar *progressBar;
 
     void setupUi(QWidget *download_window)
     {
         if (download_window->objectName().isEmpty())
             download_window->setObjectName(QString::fromUtf8("download_window"));
-        download_window->resize(806, 509);
-        progressBar = new QProgressBar(download_window);
-        progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setGeometry(QRect(57, 140, 501, 51));
-        progressBar->setValue(24);
+        download_window->resize(639, 461);
         cancel_button = new QPushButton(download_window);
         cancel_button->setObjectName(QString::fromUtf8("cancel_button"));
-        cancel_button->setGeometry(QRect(328, 350, 201, 71));
+        cancel_button->setGeometry(QRect(390, 330, 201, 71));
         pushButton_2 = new QPushButton(download_window);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(58, 370, 151, 61));
+        pushButton_2->setGeometry(QRect(40, 330, 331, 71));
+        progressBar = new QProgressBar(download_window);
+        progressBar->setObjectName(QString::fromUtf8("progressBar"));
+        progressBar->setGeometry(QRect(20, 80, 581, 51));
+        progressBar->setValue(24);
 
         retranslateUi(download_window);
 

@@ -12,23 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     socket = new QTcpSocket(this);
     load_window = new download_window(this);
     ui->stack->insertWidget(1, load_window);
-//    ui->stack->addWidget(load_window);
-//    ui->stack->setCurrentWidget(load_window);
-//    ui->stack->setCurrentIndex(1);
-
-//    QVBoxLayout *layout = new QVBoxLayout;
-//    layout->addWidget(stackedWidget);
-//    setLayout(layout);
-//    //stacked_widget = new QStackedWidget(this);
-//    stacked_widget->addWidget(this);
-//    //stacked_widget->setCurrentIndex(0);
-//
-//    load_window = new download_window(this);
-//    stacked_widget->addWidget(load_window);
-//    stacked_widget->setCurrentIndex(1);
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
+    connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
     //connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(show_widget()));
     //connect(socket, SIGNAL(readyRead()), this, SLOT(send_files()));
 }
@@ -39,15 +26,6 @@ MainWindow::~MainWindow() {
 
 void MainWindow::sock_disk() {
     socket->deleteLater();
-}
-void MainWindow::on_pushButton_clicked() {
-    action = REQUEST_DOWNLOAD;
-    Json json(1);
-    socket->connectToHost("95.72.43.35", 8080);
-    socket->write(json.JSon_request_11(160, 16, "kdv"));
-    if (!(socket->isOpen())){
-        return;
-    }
 }
 
 void MainWindow::sock_ready() {
@@ -78,10 +56,21 @@ void MainWindow::sock_ready() {
     qDebug() << "sock read";
 }
 
+void MainWindow::on_pushButton_clicked() {
+    action = REQUEST_DOWNLOAD;
+    Json json(1);
+    socket->connectToHost("95.72.43.35", 8080);
+    socket->write(json.JSon_request_11(160, 16, "kdv"));
+    if (!(socket->isOpen())){
+        return;
+    }
+}
+
 void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
     Json json(1);
     get_path();
     ui->stack->setCurrentIndex(1);
+    qDebug() << "swap window(upload)";
     if (action == 12) {
         socket->write(json.JSon_request_12(0, token));
 
@@ -114,12 +103,13 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
 //}
 
 void MainWindow::get_path() {
-    //path_to_file = ui->file_path->text();
+    path_to_file = ui->file_path->text();
 }
 void MainWindow::print_get_file_data(QString data) {
     //ui->label->setText(data);
 }
 
-void MainWindow::show_widget() {
-    qDebug() << "swap window";
+void MainWindow::move_home() {
+    ui->stack->setCurrentIndex(0);
+    qDebug() << "swap window(main)";
 }

@@ -33,25 +33,25 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QString::fromUtf8("Form"));
-        Form->resize(640, 468);
+        Form->resize(640, 460);
         stack = new QStackedWidget(Form);
         stack->setObjectName(QString::fromUtf8("stack"));
-        stack->setGeometry(QRect(10, 10, 631, 451));
+        stack->setGeometry(QRect(0, 0, 641, 461));
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
         pushButton = new QPushButton(page);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(50, 260, 191, 91));
+        pushButton->setGeometry(QRect(30, 330, 191, 71));
         pushButton->setMouseTracking(true);
         pushButton_2 = new QPushButton(page);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(320, 260, 191, 91));
+        pushButton_2->setGeometry(QRect(250, 330, 361, 71));
         textEdit = new QTextEdit(page);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(20, 80, 151, 41));
+        textEdit->setGeometry(QRect(20, 80, 151, 51));
         file_path = new QLineEdit(page);
         file_path->setObjectName(QString::fromUtf8("file_path"));
-        file_path->setGeometry(QRect(170, 80, 431, 41));
+        file_path->setGeometry(QRect(170, 80, 431, 51));
         stack->addWidget(page);
 
         retranslateUi(Form);
