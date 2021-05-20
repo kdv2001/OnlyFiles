@@ -21,6 +21,7 @@
 #include <QMessageBox>
 #include <QStandardItem>
 #include <QStackedWidget>
+#include <QBoxLayout>
 
 #define OK 0 //status ok
 #define NOT_OK 1 //status ne ok
@@ -31,7 +32,7 @@ namespace Ui{
     class Form;
 }
 
-class MainWindow : public QMainWindow{
+class MainWindow : public QWidget{
     Q_OBJECT
 
 private:
@@ -50,6 +51,7 @@ public:
     QJsonParseError json_doc_error;
     QJsonDocument json_doc;
     download_window *load_window;
+    //QStackedWidget *stack;
     //QStackedWidget *stacked_widget;
 
 public slots:

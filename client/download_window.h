@@ -36,6 +36,7 @@ public:
 
 public slots:
     void return_window();
+
     //    void sock_ready();
 //    void sock_disk();
 //public signals:

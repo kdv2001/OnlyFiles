@@ -23,5 +23,6 @@ download_window::~download_window() {
 }
 
 void download_window::return_window() {
+    //parent()->setCurrentIndex(0);
     //emit move_hole;
 }

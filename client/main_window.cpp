@@ -1,26 +1,31 @@
 #include "main_window.h"
-#include "ui_main_window.h"
-#include "ui_staked_windows.h"
+#include "ui_download_window_2.h"
+//#include "ui_staked_windows.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-        QMainWindow(parent),
+        QWidget(parent),
         ui(new Ui::Form)
 {
     Json json(1);
     ui->setupUi(this);
+    ui->stack->setCurrentIndex(0);
     socket = new QTcpSocket(this);
     load_window = new download_window(this);
+    ui->stack->insertWidget(1, load_window);
+//    ui->stack->addWidget(load_window);
+//    ui->stack->setCurrentWidget(load_window);
+//    ui->stack->setCurrentIndex(1);
 
-    ui->stackedWidget->addWidget(load_window);
-    ui->stackedWidget->setCurrentWidget(load_window);
+//    QVBoxLayout *layout = new QVBoxLayout;
+//    layout->addWidget(stackedWidget);
+//    setLayout(layout);
 //    //stacked_widget = new QStackedWidget(this);
 //    stacked_widget->addWidget(this);
 //    //stacked_widget->setCurrentIndex(0);
 //
 //    load_window = new download_window(this);
-//    stacked_widget->addWidget(load_window); //
+//    stacked_widget->addWidget(load_window);
 //    stacked_widget->setCurrentIndex(1);
-
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
@@ -70,11 +75,13 @@ void MainWindow::sock_ready() {
 
         qDebug() << "valid json status 13";
     }
+    qDebug() << "sock read";
 }
 
 void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
     Json json(1);
     get_path();
+    ui->stack->setCurrentIndex(1);
     if (action == 12) {
         socket->write(json.JSon_request_12(0, token));
 
@@ -115,7 +122,4 @@ void MainWindow::print_get_file_data(QString data) {
 
 void MainWindow::show_widget() {
     qDebug() << "swap window";
-    //this->setCentralWidget(stacked_widget);
-    //stacked_widget->setCurrentIndex(1);
-    //stacked_widget->show();
 }

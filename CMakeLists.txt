@@ -31,7 +31,9 @@ set(MOC_HEADERS
 set(UIS
         main_window.ui
         download_window.ui
-        staked_windows.ui)
+        download_window_2.ui
+        staked_windows.ui
+        untitled.ui)
 
 add_executable(
         OnlyFiles
