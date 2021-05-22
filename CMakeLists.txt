@@ -26,6 +26,7 @@ set(MOC_HEADERS
         client/main_window.h
         client/JSon_renderer.h
         client/download_window.h
+        client/file_coder.h
         )
 
 set(UIS
@@ -40,6 +41,7 @@ add_executable(
         client/download_window.cpp
         client/main_window.cpp
         client/JSon_renderer.cpp
+        client/file_coder.cpp
 
         ${MOC_HEADERS}
 

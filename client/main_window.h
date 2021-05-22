@@ -4,6 +4,7 @@
 #include "JSon_renderer.h"
 #include "file_coder.h"
 #include "download_window.h"
+#include "file_coder.h"
 
 #include <QtNetwork/QTcpSocket>
 #include <iostream>
@@ -52,6 +53,9 @@ public:
     QJsonParseError json_doc_error;
     QJsonDocument json_doc;
     download_window *load_window;
+    file_coder *file;
+    Json *json;
+    size_t part_size;
 
 public slots:
     void sock_ready();

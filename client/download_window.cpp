@@ -10,7 +10,7 @@ download_window::download_window(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::download_window)
 {
-    Json json(1);
+    //Json json();
     ui->setupUi(this);
 }
 

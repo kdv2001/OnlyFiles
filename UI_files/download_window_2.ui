@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
+     <y>-10</y>
      <width>641</width>
      <height>461</height>
     </rect>
@@ -77,6 +77,22 @@ p, li { white-space: pre-wrap; }
        <width>431</width>
        <height>51</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QSlider" name="horizontalSlider">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>160</y>
+       <width>261</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>99</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </widget>

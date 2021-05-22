@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -28,6 +29,7 @@ public:
     QPushButton *pushButton_2;
     QTextEdit *textEdit;
     QLineEdit *file_path;
+    QSlider *horizontalSlider;
 
     void setupUi(QWidget *Form)
     {
@@ -36,7 +38,7 @@ public:
         Form->resize(640, 460);
         stack = new QStackedWidget(Form);
         stack->setObjectName(QString::fromUtf8("stack"));
-        stack->setGeometry(QRect(0, 0, 641, 461));
+        stack->setGeometry(QRect(0, -10, 641, 461));
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
         pushButton = new QPushButton(page);
@@ -52,6 +54,11 @@ public:
         file_path = new QLineEdit(page);
         file_path->setObjectName(QString::fromUtf8("file_path"));
         file_path->setGeometry(QRect(170, 80, 431, 51));
+        horizontalSlider = new QSlider(page);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(20, 160, 261, 51));
+        horizontalSlider->setMaximum(99);
+        horizontalSlider->setOrientation(Qt::Horizontal);
         stack->addWidget(page);
 
         retranslateUi(Form);

@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,8 @@ class Ui_download_window
 public:
     QPushButton *cancel_button;
     QPushButton *pushButton_2;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QProgressBar *progressBar;
 
     void setupUi(QWidget *download_window)
@@ -35,10 +38,20 @@ public:
         pushButton_2 = new QPushButton(download_window);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(40, 330, 331, 71));
-        progressBar = new QProgressBar(download_window);
+        verticalLayoutWidget = new QWidget(download_window);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(30, 80, 591, 141));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        progressBar = new QProgressBar(verticalLayoutWidget);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setGeometry(QRect(20, 80, 581, 51));
+        progressBar->setEnabled(true);
+        progressBar->setMinimumSize(QSize(0, 46));
         progressBar->setValue(24);
+
+        verticalLayout->addWidget(progressBar);
+
 
         retranslateUi(download_window);
 

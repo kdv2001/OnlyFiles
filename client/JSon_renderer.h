@@ -16,7 +16,6 @@
 
 class Json {
 private:
-    int stat;
     QByteArray form;
 
 public:
@@ -24,7 +23,7 @@ public:
     QByteArray JSon_request_12(int part_num, QString token);
     QByteArray JSon_request_13(int part_num, QString token);
     QByteArray JSon_parse();
-    Json(int status);
+    Json();
     //~Json();
 };
 
