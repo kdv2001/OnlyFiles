@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::Form)
 {
     ///***
-    part_size = 5;
+    part_size = 1000;
     ///***
 
     file = new file_coder();
@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     socket = new QTcpSocket(this);
     load_window = new download_window(this);
     ui->stack->insertWidget(1, load_window);
-
+    //ui->stack->horizontalSlider
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
     connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
@@ -63,13 +63,12 @@ void MainWindow::sock_ready() {
 }
 
 void MainWindow::on_pushButton_clicked() {
-
 }
 
 void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
     action = REQUEST_DOWNLOAD;
     get_path();
-    if((file->code_file("8888", part_size, path_to_file)) == -1) {
+    if((file->get_data_file(part_size, path_to_file)) == -1){
         return;
     }
 
@@ -79,6 +78,7 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
 
 
     socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name()));
+    file->code_file("8888", part_size, path_to_file);
 
     qDebug() << token;
 

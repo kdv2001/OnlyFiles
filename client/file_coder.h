@@ -15,9 +15,10 @@ public:
     file_coder();
     ~file_coder();
     size_t code_file(QString token, size_t part_size, QString path);
-    long return_file_size();
+    qint64 return_file_size();
     size_t return_part_count();
     QString return_file_name();
+    size_t get_data_file(size_t part_size, QString path);
 private:
     QString file_name;
     qint64 file_size;
