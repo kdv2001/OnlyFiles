@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
     connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
+    connect(this, SIGNAL(start_send()), this, SLOT(send_files()));
 }
 
 MainWindow::~MainWindow() {
@@ -47,6 +48,7 @@ void MainWindow::sock_ready() {
         token = json_doc.object().value("token").toString();
         parts_to_upload = json_doc.object().value("partstoupload").toArray();
         action = REQUEST_PART_DOWNLOAD;
+
 
         qDebug() << "valid json status 12";
     }
@@ -76,7 +78,6 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
 
     qDebug() << "compile Json: " << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name());
 
-
     socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name()));
     file->code_file("8888", part_size, path_to_file);
 
@@ -86,36 +87,10 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
     qDebug() << "swap window(upload)";
 
 
-//    if (action == 12) {
-//        socket->write((json->JSon_request_12(file->return_part_count(), token)));
-//
-//    //открываем второе окно (нужно пробросить сокет и массивы и путь файла)
-//    //во втором окне кидаем json и байты, пока не придет пин и номер файла,
-//    //затем выходим в мейн виндом и Qmessagebox показываем пин номер файла
-//    //точно также на выгрузку
-//    }
 }
-//void MainWindow::send_files() {
-//    Json json(1);
-//
-//    if (json_doc.object().value("status") == 0) {
-//        std::cout << "Connected" << std::endl;
-//        status = 12;
-//    }
-//    else if (json_doc.object().value("status") == 1) {
-//        std::cout << "Not connected" << std::endl;
-//    }
-//
-//    if (status == 12){
-//        socket->write(json.JSon_request_12(0,token));
-//    }
-//
-//    socket->write(json.JSon_request_12(0,token));
-//
-//    if (status == 13){
-//
-//    }
-//}
+void MainWindow::send_files() {
+
+}
 
 void MainWindow::get_path() {
     path_to_file = ui->file_path->text();
