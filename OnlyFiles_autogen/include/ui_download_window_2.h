@@ -15,6 +15,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
@@ -30,6 +31,7 @@ public:
     QTextEdit *textEdit;
     QLineEdit *file_path;
     QSlider *horizontalSlider;
+    QTextBrowser *textBrowser;
 
     void setupUi(QWidget *Form)
     {
@@ -38,7 +40,7 @@ public:
         Form->resize(640, 460);
         stack = new QStackedWidget(Form);
         stack->setObjectName(QString::fromUtf8("stack"));
-        stack->setGeometry(QRect(0, -10, 641, 461));
+        stack->setGeometry(QRect(10, -10, 641, 461));
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
         pushButton = new QPushButton(page);
@@ -59,6 +61,9 @@ public:
         horizontalSlider->setGeometry(QRect(20, 160, 261, 51));
         horizontalSlider->setMaximum(99);
         horizontalSlider->setOrientation(Qt::Horizontal);
+        textBrowser = new QTextBrowser(page);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(165, 261, 391, 51));
         stack->addWidget(page);
 
         retranslateUi(Form);
@@ -76,6 +81,12 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt; font-weight:600;\">Path_to_file</span></p></body></html>", nullptr));
+        textBrowser->setHtml(QApplication::translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">/home/kdv/java_error_in_clion_2154.log</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
     } // retranslateUi
 
 };

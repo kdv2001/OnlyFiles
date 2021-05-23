@@ -9,6 +9,9 @@ file_coder::~file_coder() {
 }
 
 size_t file_coder::code_file(QString token, size_t part_size, QString path){
+    if(file_is_coder == 1) {
+        return 2;
+    }
     QFile work_file(path); //+ ".bin"
     //std::ifstream open_file;
     if(!(work_file.open(QIODevice::ReadOnly))) {
@@ -34,7 +37,7 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
     QByteArray buffer;
 
     for (size_t i = 0; i < file_size; i = i + part_size) {
-        count++;
+
         qDebug() << work_derektory + "/" + QString::number(count) + ".bin";
         QFile create_file(work_derektory + "/" + QString::number(count) + ".bin");
         create_file.open(QIODevice::WriteOnly);
@@ -43,7 +46,9 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
         buffer = work_file.read(part_size);
         create_file.write(buffer);
         create_file.close();
+        count++;
     }
+
 
 //    open_file.open(path.toStdString(), std::ios::binary | std::ios::in);
 //    if(!open_file) {
@@ -71,6 +76,7 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
 //        new_file.close();
 //
 //    }
+    file_is_coder = 1;
     work_file.close();
     return 0;
 }

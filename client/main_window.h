@@ -62,12 +62,13 @@ public slots:
     void sock_disk();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void open_soket();
     void send_files();
     void get_path();
     void print_get_file_data(QString data);
     void move_home();
     //void sock_write();
-    signals:
+signals:
     void start_send();
 };
 

@@ -20,6 +20,7 @@ public:
     QString return_file_name();
     size_t get_data_file(size_t part_size, QString path);
 private:
+    bool file_is_coder = 0;
     QString file_name;
     qint64 file_size;
     size_t status;
