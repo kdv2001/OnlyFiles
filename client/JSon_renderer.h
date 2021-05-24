@@ -17,6 +17,7 @@
 class Json {
 private:
     QByteArray form;
+    void remove_n();
 
 public:
     QByteArray JSon_request_11(int file_Size, int part_size, QString file_name);

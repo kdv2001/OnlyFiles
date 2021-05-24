@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
     connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
-    connect(this, SIGNAL(start_send()), this, SLOT(send_files()));
+    connect(this, SIGNAL(start_send()), this, SLOT(send_fgit iles()));
 
 }
 
@@ -79,7 +79,7 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
         return;
     }
     if (!(socket->isOpen())) {
-        socket->connectToHost("95.72.34.202", 8080);
+        socket->connectToHost("192.168.43.92", 8080);
     }
     qDebug() << "compile Json: "
              << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name());
