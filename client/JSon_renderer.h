@@ -22,7 +22,7 @@ private:
 public:
     QByteArray JSon_request_11(int file_Size, int part_size, QString file_name);
     QByteArray JSon_request_12(int part_num, QString token);
-    QByteArray JSon_request_13(int part_num, QString token);
+    QByteArray JSon_request_13(QString token);
     QByteArray JSon_parse();
     Json();
     //~Json();

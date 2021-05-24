@@ -9,19 +9,8 @@
 download_window::download_window(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::download_window)
-
 {
-    json = new Json();
     ui->setupUi(this);
-}
-
-void download_window::sock_disk() {
-    download_socket->deleteLater();
-}
-
-void download_window::sock_ready() {
-    data = download_socket->readAll();
-    qDebug() << data;
 }
 
 download_window::~download_window() {
@@ -32,11 +21,8 @@ void download_window::on_cancel_button_clicked() {
     emit return_home();
 }
 
-void download_window::on_pushButton_2_clicked() {
-}
 
-size_t download_window::download(QString token) {
-    download_socket->write(json->JSon_request_12(0, token) + "40340329493240");
-    tok = token;
-    return 0;
+void download_window::set_progress_bar(QJsonArray parts, int file_size, size_t part_size) {
+    int file_progress = (file_size/part_size - (parts.size()))/(file_size/part_size);
+    ui->progressBar->setValue(file_progress);
 }

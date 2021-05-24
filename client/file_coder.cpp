@@ -19,9 +19,9 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
         return -1;
     }
     QDataStream stream(&work_file);
-    qDebug() << "file size/fiel name: " << file_size << " " << file_name;
+    qDebug() << "file size/file name: " << file_size << " " << file_name;
 
-    QString work_derektory = "/home/kdv/OnlyFiles/transport_files/" + token;
+    QString work_derektory = "/home/kdv/OF/trans_file/" + token;
     QDir dir(work_derektory);
     if(!dir.exists())
     {

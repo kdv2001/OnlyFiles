@@ -8,6 +8,7 @@
 #include <QString>
 #include <QDataStream>
 #include <string>
+#include <QCryptographicHash>
 
 class file_coder {
 
