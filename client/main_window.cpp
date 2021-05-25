@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::Form)
 {
     ///***
-    part_size = 1000;
+    part_size = 100000;
     ///***
 
     file = new file_coder();
@@ -41,7 +41,7 @@ void MainWindow::sock_ready() {
     data = socket->readAll();
     qDebug() << data << " " << action;
     json_doc = QJsonDocument::fromJson(data, &json_doc_error);
-    QThread::sleep(1);
+    //QThread::sleep(1);
 
     if (json_doc.object().value("status").toInt() > 0) {
         ui->stack->setCurrentIndex(0);
@@ -126,7 +126,10 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
         socket->connectToHost("95.72.34.202", 8080);
     }
     action = REQUEST_DOWNLOAD;
-    socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString())));
+    if (socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString())))== 0) {
+        QMessageBox::warning(this, "connect", "cant connect");
+        return;
+    }
     qDebug() << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString()));
     ui->stack->setCurrentIndex(1);
 }
@@ -144,7 +147,9 @@ void MainWindow::send_files() {
     buffer = send_file.readAll();
 
     qDebug() << json->JSon_request_12(parts_to_upload.at(0).toInt(), token) + buffer;
+
     load_window->set_progress_bar(parts_to_upload.at(0).toInt(), file->return_file_size(), part_size);
+
     socket->write(json->JSon_request_12(parts_to_upload.at(0).toInt(), token) + buffer);
     //qDebug() << json->JSon_request_12(parts_to_upload.at(0).toInt(), token);
     send_file.close();

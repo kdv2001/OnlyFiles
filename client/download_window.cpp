@@ -22,8 +22,9 @@ void download_window::on_cancel_button_clicked() {
 }
 
 
-void download_window::set_progress_bar(int parts, int file_size, size_t part_size) {
-    int file_progress = part_size/(file_size/part_size)*100;
-    qDebug() << "progress: " << part_size/(file_size/part_size)*100;
+void download_window::set_progress_bar(int parts, size_t file_size, size_t part_size) {
+    double coef = static_cast<double>(part_size)/static_cast<double>(file_size);
+    size_t file_progress = parts * 100 * coef;
+
     ui->progressBar->setValue(file_progress);
 }
