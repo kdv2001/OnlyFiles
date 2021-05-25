@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::Form)
 {
     ///***
-    part_size = 1000;
+    part_size = 100000;
     ///***
 
     file = new file_coder();
@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
     connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
-    connect(this, SIGNAL(start_send()), this, SLOT(send_fgit iles()));
+    connect(this, SIGNAL(start_send()), this, SLOT(send_files()));
+    connect(load_window, SIGNAL(return_home()), this, SLOT(move_home()));
 
 }
 
@@ -38,75 +39,120 @@ void MainWindow::sock_disk() {
 
 void MainWindow::sock_ready() {
     data = socket->readAll();
-    qDebug() << data;
+    qDebug() << data << " " << action;
     json_doc = QJsonDocument::fromJson(data, &json_doc_error);
+    //QThread::sleep(1);
+
+    if (json_doc.object().value("status").toInt() > 0) {
+        ui->stack->setCurrentIndex(0);
+        if (json_doc.object().value("status").toInt() == 1) {
+            QMessageBox::warning(this, "bad status",
+                                 "get status: " + QString::number((json_doc.object().value("status").toInt())) + "Not ok");
+        }
+        if (json_doc.object().value("status").toInt() == 2) {
+            QMessageBox::warning(this, "bad status",
+                                 "get status: " + QString::number((json_doc.object().value("status").toInt())));
+        }
+        if (json_doc.object().value("status").toInt() == 3) {
+            QMessageBox::warning(this, "bad status",
+                                 "get status: " + QString::number((json_doc.object().value("status").toInt())));
+        }
+        if (json_doc.object().value("status").toInt() == 4) {
+            QMessageBox::warning(this, "bad status",
+                                 "get status: " + QString::number((json_doc.object().value("status").toInt())));
+        }
+        action = 0;
+        return;
+    }
 
     if((action == REQUEST_DOWNLOAD) && !(json_doc.object().value("token").isNull())) {
         QMessageBox::information(this, "connection", "connect");
     }
 
-    if ((json_doc.object().contains("token")) && !(json_doc.object().value("partstoupload") == 0)) {
+    if((action == REQUEST_DOWNLOAD) && !(json_doc.object().value("token").isNull())){
         token = json_doc.object().value("token").toString();
-        parts_to_upload = json_doc.object().value("partstoupload").toArray();
         action = REQUEST_PART_DOWNLOAD;
-        qDebug() << "valid json status 12";
-        file->code_file(token, part_size, path_to_file);
-        qDebug() << action;
+    }
 
-        qDebug() << "valid json status 12 auf";
+    if ((action == 13) && (!(json_doc.object().value("pin").isNull()))){
+        file->set_file_coder();
+        file_number = json_doc.object().value("file_number").toString();
+        pin = json_doc.object().value("secret").toString();
+        ui->stack->setCurrentIndex(0);
+        QMessageBox::information(this, "acces inf", "file number: " + file_number + + "\n" + "pin: " + pin);
+        //print_get_file_data(get_file_data);
+        action = REQUEST_DOWNLOAD;
+        qDebug() << "valid json status 13";
+        return;
+    }
+    else if ((action == 13) && ((json_doc.object().value("pin").isNull()))) {
+        QMessageBox::warning(this, "", "cant get pin\nand file number");
+        ui->stack->setCurrentIndex(0);
+        file->set_file_coder();
+        return;
+    }
+
+
+    if (!(json_doc.object().value("partstoupload") == 0) && (action == REQUEST_PART_DOWNLOAD)) {
+
+        parts_to_upload = json_doc.object().value("partstoupload").toArray();
+
+        if (parts_to_upload.size() == 0) {
+            socket->write(json->JSon_request_13(token));
+            qDebug() << json->JSon_request_13(token);
+            action = 13;
+            qDebug() << "";
+            return;
+        }
+        file->code_file(token, part_size, path_to_file);
+
+        qDebug() << "valid json status 12";
         emit start_send();
     }
-
-    if ((json_doc.object().value("partstoupload") == 0) && !(json_doc.object().value("pin") == 0)){
-        get_file_data = json_doc.object().value("partstoupload").toArray();
-        get_file_data = json_doc.object().value("pin").toArray();
-        //print_get_file_data(get_file_data);
-        action = 13;
-
-        qDebug() << "valid json status 13";
-    }
-    qDebug() << "sock read";
 }
 
 void MainWindow::on_pushButton_clicked() {
-    socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name()));
+
 }
 
 void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
-    action = REQUEST_DOWNLOAD;
+
     get_path();
+    md5wrapper md5;
     if ((file->get_data_file(part_size, path_to_file)) == -1) {
         return;
     }
     if (!(socket->isOpen())) {
-        socket->connectToHost("192.168.43.92", 8080);
+        socket->connectToHost("95.72.34.202", 8080);
     }
-    qDebug() << "compile Json: "
-             << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name());
-
-    socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name()));
+    action = REQUEST_DOWNLOAD;
+    if (socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString())))== 0) {
+        QMessageBox::warning(this, "connect", "cant connect");
+        return;
+    }
+    qDebug() << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString()));
     ui->stack->setCurrentIndex(1);
-
-    qDebug() << "swap window(upload)";
 }
 
 void MainWindow::send_files() {
-//    if(parts_to_upload.isEmpty()){
-//        return;
-//    }
-    qDebug() << parts_to_upload.at(0).toInt();
-    QFile send_file("/home/kdv/OnlyFiles/transport_files/" + token + "/" + QString::number(parts_to_upload.at(0).toInt()) + ".bin");
+    QFile send_file("/home/kdv/OF/trans_file/" + token + "/" + QString::number(parts_to_upload.at(0).toInt()) + ".bin");
+    //send_file.open(QIODevice::ReadOnly);
     if(!(send_file.open(QIODevice::ReadOnly))) {
-        qWarning() << "cant open file to send  " << "/home/kdv/OnlyFiles/transport_files/" + token + "/" + QString::number(parts_to_upload.at(0).toInt())+ ".bin";
+        qWarning() << "cant open file to send  " << "/home/kdv/OF/trans_file/" + token + "/" + QString::number(parts_to_upload.at(0).toInt())+ ".bin";
+        send_file.close();
         return;
     }
     QDataStream send_file_stream(&send_file);
     QByteArray buffer;
     buffer = send_file.readAll();
 
-    socket->write(json->JSon_request_12(parts_to_upload.at(0).toInt(), token) + buffer);
-    qDebug() << json->JSon_request_12(parts_to_upload.at(0).toInt(), token);
+    qDebug() << json->JSon_request_12(parts_to_upload.at(0).toInt(), token) + buffer;
 
+    load_window->set_progress_bar(parts_to_upload.at(0).toInt(), file->return_file_size(), part_size);
+
+    socket->write(json->JSon_request_12(parts_to_upload.at(0).toInt(), token) + buffer);
+    //qDebug() << json->JSon_request_12(parts_to_upload.at(0).toInt(), token);
+    send_file.close();
 }
 
 void MainWindow::get_path() {
@@ -119,9 +165,4 @@ void MainWindow::print_get_file_data(QString data) {
 void MainWindow::move_home() {
     ui->stack->setCurrentIndex(0);
     qDebug() << "swap window(main)";
-}
-
-void MainWindow::open_soket() {
-    socket = new QTcpSocket(this);
-    socket->connectToHost("95.72.34.202", 8080);
 }

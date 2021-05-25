@@ -12,6 +12,9 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
     if(file_is_coder == 1) {
         return 2;
     }
+    md5wrapper md5;
+    md5_hash_file = QString::fromStdString(md5.getHashFromFile(path.toStdString()));
+
     QFile work_file(path); //+ ".bin"
     //std::ifstream open_file;
     if(!(work_file.open(QIODevice::ReadOnly))) {
@@ -19,9 +22,9 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
         return -1;
     }
     QDataStream stream(&work_file);
-    qDebug() << "file size/fiel name: " << file_size << " " << file_name;
+    qDebug() << "file size/file name: " << file_size << " " << file_name;
 
-    QString work_derektory = "/home/kdv/OnlyFiles/transport_files/" + token;
+    QString work_derektory = "/home/kdv/OF/trans_file/" + token;
     QDir dir(work_derektory);
     if(!dir.exists())
     {
@@ -105,4 +108,11 @@ size_t file_coder::return_part_count() {
 
 QString file_coder::return_file_name() {
     return file_name;
+}
+
+QString file_coder::return_hash() {
+    return md5_hash_file;
+}
+void file_coder::set_file_coder(){
+    file_is_coder = 0;
 }

@@ -5,6 +5,8 @@
 #include "file_coder.h"
 #include "download_window.h"
 #include "file_coder.h"
+#include "md5wrapper.h"
+#include "md5.h"
 
 #include <QtNetwork/QTcpSocket>
 #include <iostream>
@@ -23,6 +25,7 @@
 #include <QStandardItem>
 #include <QStackedWidget>
 #include <QBoxLayout>
+#include <QThread>
 
 #define OK 0 //status ok
 #define NOT_OK 1 //status ne ok
@@ -42,10 +45,11 @@ private:
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    QString path_to_file;
 
+    QString pin;
+    QString file_number;
+    QString path_to_file;
     QJsonArray parts_to_upload;
-    QJsonArray get_file_data; //data [file number pin]
     QTcpSocket* socket;
     QByteArray data;
     QString token;
@@ -62,7 +66,6 @@ public slots:
     void sock_disk();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
-    void open_soket();
     void send_files();
     void get_path();
     void print_get_file_data(QString data);
