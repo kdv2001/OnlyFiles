@@ -9,6 +9,8 @@
 #include <QDataStream>
 #include <string>
 #include <QCryptographicHash>
+#include "md5wrapper.h"
+#include "md5.h"
 
 class file_coder {
 
@@ -20,7 +22,11 @@ public:
     size_t return_part_count();
     QString return_file_name();
     size_t get_data_file(size_t part_size, QString path);
+    QString return_hash();
+    void set_file_coder();
+
 private:
+    QString md5_hash_file;
     bool file_is_coder = 0;
     QString file_name;
     qint64 file_size;

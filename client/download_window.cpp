@@ -22,7 +22,8 @@ void download_window::on_cancel_button_clicked() {
 }
 
 
-void download_window::set_progress_bar(QJsonArray parts, int file_size, size_t part_size) {
-    int file_progress = (file_size/part_size - (parts.size()))/(file_size/part_size);
+void download_window::set_progress_bar(int parts, int file_size, size_t part_size) {
+    int file_progress = part_size/(file_size/part_size)*100;
+    qDebug() << "progress: " << part_size/(file_size/part_size)*100;
     ui->progressBar->setValue(file_progress);
 }

@@ -13,14 +13,14 @@ void Json::remove_n() {
 //    form.remove(form.indexOf('\n',0), 1);
 }
 
-QByteArray Json::JSon_request_11(int file_Size, int part_size, QString file_name) {
+QByteArray Json::JSon_request_11(int file_Size, int part_size, QString file_name, std::string hash) {
     QJsonObject record_Object;
     record_Object.insert("action", 11);
     record_Object.insert("file_size", file_Size);
     record_Object.insert("part_size", part_size);
     record_Object.insert("part_num", file_Size / part_size);
     record_Object.insert("file_name", file_name);
-    record_Object.insert("uniq", "rgergercchhgtyjtfffyffddfxxdfdfdfdsdsdffggfgcvcvddsdjtyergyn");
+    record_Object.insert("uniq", QString::fromStdString(hash));
     QJsonDocument doc(record_Object);
     QString form_json = doc.toJson();
     form = QJsonDocument(record_Object).toJson();

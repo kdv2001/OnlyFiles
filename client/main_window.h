@@ -5,6 +5,8 @@
 #include "file_coder.h"
 #include "download_window.h"
 #include "file_coder.h"
+#include "md5wrapper.h"
+#include "md5.h"
 
 #include <QtNetwork/QTcpSocket>
 #include <iostream>
@@ -51,7 +53,7 @@ public:
     QTcpSocket* socket;
     QByteArray data;
     QString token;
-    int action = 11;
+    int action;
     QJsonParseError json_doc_error;
     QJsonDocument json_doc;
     download_window *load_window;

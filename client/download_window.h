@@ -36,7 +36,7 @@ public:
     explicit download_window(QWidget *parent);
     ~download_window();
     size_t download(QString token);
-    void set_progress_bar(QJsonArray parts, int file_size, size_t part_size);
+    void set_progress_bar(int parts, int file_size, size_t part_size);
 public slots:
     void on_cancel_button_clicked(); // cancel button
 
