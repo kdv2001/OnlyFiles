@@ -62,10 +62,10 @@ RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kdv/OnlyFiles
+CMAKE_SOURCE_DIR = /home/kdv/OF
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kdv/OnlyFiles/cmake-build-debug
+CMAKE_BINARY_DIR = /home/kdv/OF/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OnlyFiles.dir/depend.make
@@ -76,30 +76,139 @@ include CMakeFiles/OnlyFiles.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/OnlyFiles.dir/flags.make
 
-CMakeFiles/OnlyFiles.dir/main.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
-CMakeFiles/OnlyFiles.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OnlyFiles/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OnlyFiles.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/main.cpp.o -c /home/kdv/OnlyFiles/main.cpp
+CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o: OnlyFiles_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o -c /home/kdv/OF/cmake-build-debug/OnlyFiles_autogen/mocs_compilation.cpp
 
-CMakeFiles/OnlyFiles.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OnlyFiles/main.cpp > CMakeFiles/OnlyFiles.dir/main.cpp.i
+CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/cmake-build-debug/OnlyFiles_autogen/mocs_compilation.cpp > CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.i
 
-CMakeFiles/OnlyFiles.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OnlyFiles/main.cpp -o CMakeFiles/OnlyFiles.dir/main.cpp.s
+CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/cmake-build-debug/OnlyFiles_autogen/mocs_compilation.cpp -o CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/main.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/main.cpp.o: ../client/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OnlyFiles.dir/client/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/main.cpp.o -c /home/kdv/OF/client/main.cpp
+
+CMakeFiles/OnlyFiles.dir/client/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/main.cpp > CMakeFiles/OnlyFiles.dir/client/main.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/main.cpp -o CMakeFiles/OnlyFiles.dir/client/main.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o: ../client/download_window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o -c /home/kdv/OF/client/download_window.cpp
+
+CMakeFiles/OnlyFiles.dir/client/download_window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/download_window.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/download_window.cpp > CMakeFiles/OnlyFiles.dir/client/download_window.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/download_window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/download_window.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/download_window.cpp -o CMakeFiles/OnlyFiles.dir/client/download_window.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o: ../client/main_window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o -c /home/kdv/OF/client/main_window.cpp
+
+CMakeFiles/OnlyFiles.dir/client/main_window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/main_window.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/main_window.cpp > CMakeFiles/OnlyFiles.dir/client/main_window.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/main_window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/main_window.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/main_window.cpp -o CMakeFiles/OnlyFiles.dir/client/main_window.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o: ../client/JSon_renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o -c /home/kdv/OF/client/JSon_renderer.cpp
+
+CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/JSon_renderer.cpp > CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/JSon_renderer.cpp -o CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o: ../client/file_coder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o -c /home/kdv/OF/client/file_coder.cpp
+
+CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/file_coder.cpp > CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/file_coder.cpp -o CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/md5.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/md5.cpp.o: ../client/md5.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/OnlyFiles.dir/client/md5.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/md5.cpp.o -c /home/kdv/OF/client/md5.cpp
+
+CMakeFiles/OnlyFiles.dir/client/md5.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/md5.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/md5.cpp > CMakeFiles/OnlyFiles.dir/client/md5.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/md5.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/md5.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/md5.cpp -o CMakeFiles/OnlyFiles.dir/client/md5.cpp.s
+
+CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o: CMakeFiles/OnlyFiles.dir/flags.make
+CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o: ../client/md5wrapper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o -c /home/kdv/OF/client/md5wrapper.cpp
+
+CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kdv/OF/client/md5wrapper.cpp > CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.i
+
+CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kdv/OF/client/md5wrapper.cpp -o CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.s
 
 # Object files for target OnlyFiles
 OnlyFiles_OBJECTS = \
-"CMakeFiles/OnlyFiles.dir/main.cpp.o"
+"CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/main.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/md5.cpp.o" \
+"CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o"
 
 # External object files for target OnlyFiles
 OnlyFiles_EXTERNAL_OBJECTS =
 
-OnlyFiles: CMakeFiles/OnlyFiles.dir/main.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/main.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/md5.cpp.o
+OnlyFiles: CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o
 OnlyFiles: CMakeFiles/OnlyFiles.dir/build.make
+OnlyFiles: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8
+OnlyFiles: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8
+OnlyFiles: /usr/lib/x86_64-linux-gnu/libQt5Network.so.5.12.8
+OnlyFiles: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8
 OnlyFiles: CMakeFiles/OnlyFiles.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kdv/OnlyFiles/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OnlyFiles"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kdv/OF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable OnlyFiles"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OnlyFiles.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -112,6 +221,6 @@ CMakeFiles/OnlyFiles.dir/clean:
 .PHONY : CMakeFiles/OnlyFiles.dir/clean
 
 CMakeFiles/OnlyFiles.dir/depend:
-	cd /home/kdv/OnlyFiles/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kdv/OnlyFiles /home/kdv/OnlyFiles /home/kdv/OnlyFiles/cmake-build-debug /home/kdv/OnlyFiles/cmake-build-debug /home/kdv/OnlyFiles/cmake-build-debug/CMakeFiles/OnlyFiles.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kdv/OF/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kdv/OF /home/kdv/OF /home/kdv/OF/cmake-build-debug /home/kdv/OF/cmake-build-debug /home/kdv/OF/cmake-build-debug/CMakeFiles/OnlyFiles.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/OnlyFiles.dir/depend
 

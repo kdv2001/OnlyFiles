@@ -1,0 +1,5 @@
+ATH__;1;__SSE2_MATH__;1;__SEG_FS;1;__SEG_GS;1;__CET__;3;__gnu_linux__;1;__linux;1;__linux__;1;linux;1;__unix;1;__unix__;1;unix;1;__ELF__;1;__DECIMAL_BID_FORMAT__;1;_GNU_SOURCE;1;_STDC_PREDEF_H;1;__STDC_IEC_559__;1;__STDC_IEC_559_COMPLEX__;1;__STDC_ISO_10646__;201706L
+//CXX compiler system include directories
+CMAKE_EXTRA_GENERATOR_CXX_SYSTEM_INCLUDE_DIRS:INTERNAL=/usr/include/c++/9;/usr/include/x86_64-linux-gnu/c++/9;/usr/include/c++/9/backward;/usr/lib/gcc/x86_64-linux-gnu/9/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include
+//C compiler system defined macros
+CMAKE_EXTRA_GENERATOR_C_SYSTEM_DEFINED_MACROS:INTERNAL=__STDC__;1;__STDC_VERSION__;201710L;__STDC_UTF_16__;1;__STDC_UTF_32__;1;__STDC_HOSTED__;1;__GNUC__;9;__GNUC_MINOR__;3;__GNUC_PATCHLEVEL__;0;__VERSION__;"9.3.0";__ATOMIC_RELAXED;0;__ATOMIC_SEQ_CST;5;__ATOMIC_ACQUIRE;2;__ATOMIC_RELEASE;3;__ATOMIC_ACQ_REL;4;__ATOMIC_CONSUME;1;__pic__;2;__PIC__;2;__pie__;2;__PIE__;2;__FINITE_MATH_ONLY__;0;_LP64;1;__LP64__;1;__SI

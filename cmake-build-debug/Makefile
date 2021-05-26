@@ -67,10 +67,10 @@ RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kdv/OnlyFiles
+CMAKE_SOURCE_DIR = /home/kdv/OF
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kdv/OnlyFiles/cmake-build-debug
+CMAKE_BINARY_DIR = /home/kdv/OF/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,6 +86,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/snap/clion/151/bin/cmake/linux/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -99,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kdv/OnlyFiles/cmake-build-debug/CMakeFiles /home/kdv/OnlyFiles/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kdv/OF/cmake-build-debug/CMakeFiles /home/kdv/OF/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kdv/OnlyFiles/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kdv/OF/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,32 +153,234 @@ OnlyFiles/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/build
 .PHONY : OnlyFiles/fast
 
-main.o: main.cpp.o
+#=============================================================================
+# Target rules for targets named OnlyFiles_autogen
 
-.PHONY : main.o
+# Build rule for target.
+OnlyFiles_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 OnlyFiles_autogen
+.PHONY : OnlyFiles_autogen
+
+# fast build rule for target.
+OnlyFiles_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles_autogen.dir/build.make CMakeFiles/OnlyFiles_autogen.dir/build
+.PHONY : OnlyFiles_autogen/fast
+
+OnlyFiles_autogen/mocs_compilation.o: OnlyFiles_autogen/mocs_compilation.cpp.o
+
+.PHONY : OnlyFiles_autogen/mocs_compilation.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/main.cpp.o
-.PHONY : main.cpp.o
+OnlyFiles_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.o
+.PHONY : OnlyFiles_autogen/mocs_compilation.cpp.o
 
-main.i: main.cpp.i
+OnlyFiles_autogen/mocs_compilation.i: OnlyFiles_autogen/mocs_compilation.cpp.i
 
-.PHONY : main.i
+.PHONY : OnlyFiles_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/main.cpp.i
-.PHONY : main.cpp.i
+OnlyFiles_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.i
+.PHONY : OnlyFiles_autogen/mocs_compilation.cpp.i
 
-main.s: main.cpp.s
+OnlyFiles_autogen/mocs_compilation.s: OnlyFiles_autogen/mocs_compilation.cpp.s
 
-.PHONY : main.s
+.PHONY : OnlyFiles_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/main.cpp.s
-.PHONY : main.cpp.s
+OnlyFiles_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/OnlyFiles_autogen/mocs_compilation.cpp.s
+.PHONY : OnlyFiles_autogen/mocs_compilation.cpp.s
+
+client/JSon_renderer.o: client/JSon_renderer.cpp.o
+
+.PHONY : client/JSon_renderer.o
+
+# target to build an object file
+client/JSon_renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.o
+.PHONY : client/JSon_renderer.cpp.o
+
+client/JSon_renderer.i: client/JSon_renderer.cpp.i
+
+.PHONY : client/JSon_renderer.i
+
+# target to preprocess a source file
+client/JSon_renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.i
+.PHONY : client/JSon_renderer.cpp.i
+
+client/JSon_renderer.s: client/JSon_renderer.cpp.s
+
+.PHONY : client/JSon_renderer.s
+
+# target to generate assembly for a file
+client/JSon_renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/JSon_renderer.cpp.s
+.PHONY : client/JSon_renderer.cpp.s
+
+client/download_window.o: client/download_window.cpp.o
+
+.PHONY : client/download_window.o
+
+# target to build an object file
+client/download_window.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/download_window.cpp.o
+.PHONY : client/download_window.cpp.o
+
+client/download_window.i: client/download_window.cpp.i
+
+.PHONY : client/download_window.i
+
+# target to preprocess a source file
+client/download_window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/download_window.cpp.i
+.PHONY : client/download_window.cpp.i
+
+client/download_window.s: client/download_window.cpp.s
+
+.PHONY : client/download_window.s
+
+# target to generate assembly for a file
+client/download_window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/download_window.cpp.s
+.PHONY : client/download_window.cpp.s
+
+client/file_coder.o: client/file_coder.cpp.o
+
+.PHONY : client/file_coder.o
+
+# target to build an object file
+client/file_coder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.o
+.PHONY : client/file_coder.cpp.o
+
+client/file_coder.i: client/file_coder.cpp.i
+
+.PHONY : client/file_coder.i
+
+# target to preprocess a source file
+client/file_coder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.i
+.PHONY : client/file_coder.cpp.i
+
+client/file_coder.s: client/file_coder.cpp.s
+
+.PHONY : client/file_coder.s
+
+# target to generate assembly for a file
+client/file_coder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/file_coder.cpp.s
+.PHONY : client/file_coder.cpp.s
+
+client/main.o: client/main.cpp.o
+
+.PHONY : client/main.o
+
+# target to build an object file
+client/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main.cpp.o
+.PHONY : client/main.cpp.o
+
+client/main.i: client/main.cpp.i
+
+.PHONY : client/main.i
+
+# target to preprocess a source file
+client/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main.cpp.i
+.PHONY : client/main.cpp.i
+
+client/main.s: client/main.cpp.s
+
+.PHONY : client/main.s
+
+# target to generate assembly for a file
+client/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main.cpp.s
+.PHONY : client/main.cpp.s
+
+client/main_window.o: client/main_window.cpp.o
+
+.PHONY : client/main_window.o
+
+# target to build an object file
+client/main_window.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main_window.cpp.o
+.PHONY : client/main_window.cpp.o
+
+client/main_window.i: client/main_window.cpp.i
+
+.PHONY : client/main_window.i
+
+# target to preprocess a source file
+client/main_window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main_window.cpp.i
+.PHONY : client/main_window.cpp.i
+
+client/main_window.s: client/main_window.cpp.s
+
+.PHONY : client/main_window.s
+
+# target to generate assembly for a file
+client/main_window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/main_window.cpp.s
+.PHONY : client/main_window.cpp.s
+
+client/md5.o: client/md5.cpp.o
+
+.PHONY : client/md5.o
+
+# target to build an object file
+client/md5.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5.cpp.o
+.PHONY : client/md5.cpp.o
+
+client/md5.i: client/md5.cpp.i
+
+.PHONY : client/md5.i
+
+# target to preprocess a source file
+client/md5.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5.cpp.i
+.PHONY : client/md5.cpp.i
+
+client/md5.s: client/md5.cpp.s
+
+.PHONY : client/md5.s
+
+# target to generate assembly for a file
+client/md5.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5.cpp.s
+.PHONY : client/md5.cpp.s
+
+client/md5wrapper.o: client/md5wrapper.cpp.o
+
+.PHONY : client/md5wrapper.o
+
+# target to build an object file
+client/md5wrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.o
+.PHONY : client/md5wrapper.cpp.o
+
+client/md5wrapper.i: client/md5wrapper.cpp.i
+
+.PHONY : client/md5wrapper.i
+
+# target to preprocess a source file
+client/md5wrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.i
+.PHONY : client/md5wrapper.cpp.i
+
+client/md5wrapper.s: client/md5wrapper.cpp.s
+
+.PHONY : client/md5wrapper.s
+
+# target to generate assembly for a file
+client/md5wrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OnlyFiles.dir/build.make CMakeFiles/OnlyFiles.dir/client/md5wrapper.cpp.s
+.PHONY : client/md5wrapper.cpp.s
 
 # Help Target
 help:
@@ -177,10 +390,33 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... OnlyFiles_autogen"
 	@echo "... OnlyFiles"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... OnlyFiles_autogen/mocs_compilation.o"
+	@echo "... OnlyFiles_autogen/mocs_compilation.i"
+	@echo "... OnlyFiles_autogen/mocs_compilation.s"
+	@echo "... client/JSon_renderer.o"
+	@echo "... client/JSon_renderer.i"
+	@echo "... client/JSon_renderer.s"
+	@echo "... client/download_window.o"
+	@echo "... client/download_window.i"
+	@echo "... client/download_window.s"
+	@echo "... client/file_coder.o"
+	@echo "... client/file_coder.i"
+	@echo "... client/file_coder.s"
+	@echo "... client/main.o"
+	@echo "... client/main.i"
+	@echo "... client/main.s"
+	@echo "... client/main_window.o"
+	@echo "... client/main_window.i"
+	@echo "... client/main_window.s"
+	@echo "... client/md5.o"
+	@echo "... client/md5.i"
+	@echo "... client/md5.s"
+	@echo "... client/md5wrapper.o"
+	@echo "... client/md5wrapper.i"
+	@echo "... client/md5wrapper.s"
 .PHONY : help
 
 

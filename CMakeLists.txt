@@ -1,6 +1,57 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.16.3)
 project(OnlyFiles)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(OnlyFiles main.cpp)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS UI_files)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+find_package(Qt5 COMPONENTS Network Core Gui Widgets REQUIRED)
+find_package(Qt5Network)
+
+enable_testing()
+
+include_directories(image)
+
+set(MOC_HEADERS
+        client/main_window.h
+        client/JSon_renderer.h
+        client/download_window.h
+        client/file_coder.h
+        client/md5.h
+        client/md5wrapper.h
+        )
+
+set(UIS
+        download_window.ui
+        download_window_2.ui
+        )
+
+add_executable(
+        OnlyFiles
+
+        client/main.cpp
+        client/download_window.cpp
+        client/main_window.cpp
+        client/JSon_renderer.cpp
+        client/file_coder.cpp
+        client/md5.cpp
+        client/md5wrapper.cpp
+
+        ${MOC_HEADERS}
+
+        ${UI_HEADERS}
+)
+
+##add_subdirectory(image)
+#add_subdirectory(qtTesting)
+
+target_link_libraries(OnlyFiles Qt5::Widgets Qt5::Core Qt5::Network Qt5::Gui)
+target_link_libraries(OnlyFiles Qt5::Network)

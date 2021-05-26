@@ -1,0 +1,21 @@
+ariable: CMAKE_ADDR2LINE
+CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_AR
+CMAKE_AR-ADVANCED:INTERNAL=1
+//This is the directory where this CMakeCache.txt was created
+CMAKE_CACHEFILE_DIR:INTERNAL=/home/kdv/OF/cmake-build-debug
+//Major version of cmake used to create the current loaded cache
+CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
+//Minor version of cmake used to create the current loaded cache
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=19
+//Patch version of cmake used to create the current loaded cache
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
+CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
+//Path to CMake executable.
+CMAKE_COMMAND:INTERNAL=/snap/clion/151/bin/cmake/linux/bin/cmake
+//Path to cpack program executable.
+CMAKE_CPACK_COMMAND:INTERNAL=/snap/clion/151/bin/cmake/linux/bin/cpack
+//Path to ctest program executable.
+CMAKE_CTEST_COMMAND:INTERNAL=/snap/clion/151/bin/cmake/linux/bin/ctest
+//ADVANCED property for variable: C

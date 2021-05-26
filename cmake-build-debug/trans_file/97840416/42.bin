@@ -1,0 +1,14 @@
+F_FLOAT128__;16;__ATOMIC_HLE_ACQUIRE;65536;__ATOMIC_HLE_RELEASE;131072;__GCC_ASM_FLAG_OUTPUTS__;1;__k8;1;__k8__;1;__code_model_small__;1;__MMX__;1;__SSE__;1;__SSE2__;1;__FXSR__;1;__SSE_MATH__;1;__SSE2_MATH__;1;__SEG_FS;1;__SEG_GS;1;__CET__;3;__gnu_linux__;1;__linux;1;__linux__;1;linux;1;__unix;1;__unix__;1;unix;1;__ELF__;1;__DECIMAL_BID_FORMAT__;1;_STDC_PREDEF_H;1;__STDC_IEC_559__;1;__STDC_IEC_559_COMPLEX__;1;__STDC_ISO_10646__;201706L
+//C compiler system include directories
+CMAKE_EXTRA_GENERATOR_C_SYSTEM_INCLUDE_DIRS:INTERNAL=/usr/lib/gcc/x86_64-linux-gnu/9/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include
+//Name of generator.
+CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+//Generator instance identifier.
+CMAKE_GENERATOR_INSTANCE:INTERNAL=
+//Name of generator platform.
+CMAKE_GENERATOR_PLATFORM:INTERNAL=
+//Name of generator toolset.
+CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Source directory with the top level CMakeLists.txt file for this
+// project
+CMAKE_HOME_DIRECTORY:INTERNAL=

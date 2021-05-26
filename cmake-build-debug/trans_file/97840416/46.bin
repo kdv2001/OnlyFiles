@@ -1,0 +1,10 @@
+TERNAL=1
+//uname command
+CMAKE_UNAME:INTERNAL=/usr/bin/uname
+//ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
+CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ProcessorCount_cmd_nproc
+ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ProcessorCount_cmd_sysctl
+ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
+
