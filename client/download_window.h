@@ -37,6 +37,7 @@ public:
     ~download_window();
     size_t download(QString token);
     void set_progress_bar(int parts, size_t file_size, size_t part_size);
+
 public slots:
     void on_cancel_button_clicked(); // cancel button
 

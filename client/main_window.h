@@ -29,8 +29,12 @@
 
 #define OK 0 //status ok
 #define NOT_OK 1 //status ne ok
-#define REQUEST_DOWNLOAD 11 //request download file
-#define REQUEST_PART_DOWNLOAD 12 //request download part or parts file
+#define REQUEST_UPLOAD 11 //request download file
+#define REQUEST_PART_UPLOAD 12 //request download part or parts file
+#define REQUEST_GET_ACCESS_DATA 13
+#define REQUEST_GET_FILE 21
+#define REQUEST_DOWNLOAD_FILE 22
+#define REQUEST_DOWNLOAD_PART 23
 
 namespace Ui{
     class Form;
@@ -48,6 +52,8 @@ public:
 
     QString pin;
     QString file_number;
+    QString get_ui_pin;
+    QString get_ui_file_number;
     QString path_to_file;
     QJsonArray parts_to_upload;
     QTcpSocket* socket;
@@ -66,11 +72,15 @@ public slots:
     void sock_disk();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void on_pushButton_3_clicked();
     void send_files();
     void get_path();
     void print_get_file_data(QString data);
     void move_home();
-    //void sock_write();
+    void set_action_cancel();
+    void get_pin_from_ui();
+    void get_file_number_from_ui();
+
 signals:
     void start_send();
 };

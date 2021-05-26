@@ -22,15 +22,16 @@ public:
     size_t return_part_count();
     QString return_file_name();
     size_t get_data_file(size_t part_size, QString path);
-    QString return_hash();
     void set_file_coder();
+    QString return_file_path();
+    bool delete_time_derectory(QString path_to_file);
+    size_t decode_file(QString token, size_t part_size, QString path);
 
 private:
-    QString md5_hash_file;
+    QString work_derektory;
     bool file_is_coder = 0;
     QString file_name;
     qint64 file_size;
-    size_t status;
     size_t part_count;
 };
 

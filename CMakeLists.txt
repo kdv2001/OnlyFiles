@@ -13,14 +13,12 @@ if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
 
-include_directories(${OpenCV_INCLUDE_DIRS})
-
 find_package(Qt5 COMPONENTS Network Core Gui Widgets REQUIRED)
 find_package(Qt5Network)
 
 enable_testing()
 
-include_directories(include)
+include_directories(image)
 
 set(MOC_HEADERS
         client/main_window.h
@@ -52,8 +50,7 @@ add_executable(
         ${UI_HEADERS}
 )
 
-
-#add_subdirectory(tests)
+##add_subdirectory(image)
 #add_subdirectory(qtTesting)
 
 target_link_libraries(OnlyFiles Qt5::Widgets Qt5::Core Qt5::Network Qt5::Gui)
