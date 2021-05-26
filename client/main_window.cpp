@@ -13,16 +13,18 @@ MainWindow::MainWindow(QWidget *parent) :
     file = new file_coder();
     json = new Json();
     ui->setupUi(this);
+
     ui->stack->setCurrentIndex(0);
     socket = new QTcpSocket(this);
     load_window = new download_window(this);
     ui->stack->insertWidget(1, load_window);
     //ui->stack->horizontalSlider
+
     connect(socket, SIGNAL(readyRead()), this, SLOT(sock_ready()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sock_disk()));
     connect(load_window, SIGNAL(return_home()), this, SLOT(move_home())); //signal swap widget
     connect(this, SIGNAL(start_send()), this, SLOT(send_files()));
-    connect(load_window, SIGNAL(return_home()), this, SLOT(move_home()));
+    //connect(load_window, SIGNAL(return_home()), this, SLOT(move_home()));
 
 }
 
