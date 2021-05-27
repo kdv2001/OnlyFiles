@@ -32,6 +32,7 @@
 #define REQUEST_UPLOAD 11 //request download file
 #define REQUEST_PART_UPLOAD 12 //request download part or parts file
 #define REQUEST_GET_ACCESS_DATA 13
+//Part II
 #define REQUEST_GET_FILE 21
 #define REQUEST_DOWNLOAD_FILE 22
 #define REQUEST_DOWNLOAD_PART 23
@@ -50,11 +51,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    QString pin;
-    QString file_number;
-    QString get_ui_pin;
-    QString get_ui_file_number;
-    QString path_to_file;
+    QString file_name;
+    QString hash;
+    size_t file_size;
+
+    QString pin; //get pin from server
+    QString file_number; //get file number from server
+    QString get_ui_pin; //get pin from ui
+    QString get_ui_file_number; //get file number from ui
+    QString path_to_file; //get path to file from ui
     QJsonArray parts_to_upload;
     QTcpSocket* socket;
     QByteArray data;

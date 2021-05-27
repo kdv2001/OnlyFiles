@@ -114,10 +114,15 @@ void MainWindow::sock_ready() {
         emit start_send();
     }
     ////////////part II
+    if ((action == REQUEST_GET_FILE) && (!(json_doc.object().value("file_name").isNull()))) {
+        file_name = json_doc.object().value("file_name").toString();
+        hash = json_doc.object().value("uniq").toString();
+        file_size = json_doc.object().value("file_size").toInt();
+    }
 
 }
 
-void MainWindow::on_pushButton_clicked() { //
+void MainWindow::on_pushButton_clicked() { //start download file from server
     get_pin_from_ui();
     get_file_number_from_ui();
     if(get_ui_file_number.isEmpty() || get_ui_pin.isEmpty()) {
@@ -129,10 +134,10 @@ void MainWindow::on_pushButton_clicked() { //
         socket->connectToHost("95.72.34.202", 8080);
     }
     //check it//check it//check it//check it//check it//check it//check it//check it
-    if(QAbstractSocket::ConnectedState != socket->state()) {
-        QMessageBox::warning(this, "connect", "cant connect");
-        return;
-    }
+//    if(QAbstractSocket::ConnectedState != socket->state()) {
+//        QMessageBox::warning(this, "connect", "cant connect");
+//        return;
+//    }
     socket->write(json->JJSon_request_21(get_ui_file_number, get_ui_pin));
 
 
@@ -153,13 +158,17 @@ void MainWindow::on_pushButton_2_clicked() { //start send - Bottom
     if (!(socket->isOpen())) {
         socket->connectToHost("95.72.34.202", 8080);
     }
+
     //check it//check it//check it//check it//check it//check it//check it//check it
-    if(QAbstractSocket::ConnectedState != socket->state()) {
-        QMessageBox::warning(this, "connect", "cant connect");
-        return;
-    }
+//    if(socket->state() != QAbstractSocket::ConnectedState) {
+//        QMessageBox::warning(this, "connect", "cant connect");
+//        socket->close();
+//        return;
+//    }
+
     action = REQUEST_UPLOAD;
     socket->write(json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString())));
+
 
     qDebug() << json->JSon_request_11(file->return_file_size(), part_size, file->return_file_name(), md5.getHashFromFile(path_to_file.toStdString()));
     ui->stack->setCurrentIndex(1);
@@ -172,6 +181,8 @@ void MainWindow::send_files() {
     if(!(send_file.open(QIODevice::ReadOnly))) {
         qWarning() << "cant open file to send  " << file->return_file_path() + "/" + QString::number(parts_to_upload.at(0).toInt()) + ".bin";
         send_file.close();
+
+        action = 0;
         return;
     }
     QDataStream send_file_stream(&send_file);
