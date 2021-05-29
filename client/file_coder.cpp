@@ -8,7 +8,7 @@ file_coder::~file_coder() {
 
 }
 
-size_t file_coder::code_file(QString token, size_t part_size, QString path){
+size_t file_coder::code_file(QString token, QString path){
     if(file_is_coder == 1) {
         return 2;
     }
@@ -82,7 +82,12 @@ size_t file_coder::code_file(QString token, size_t part_size, QString path){
     return 0;
 }
 
-size_t file_coder::get_data_file(size_t part_size, QString path) {
+size_t file_coder::get_file_part(QString token, size_t part_size, QByteArray data) {
+    data.toStdString();
+    return 0;
+}
+
+size_t file_coder::get_data_file(size_t part_count, QString path) {
     QFile work_file(path); //+ ".bin"
     if(!(work_file.open(QIODevice::ReadOnly))) {
         qDebug() << "cant found file";
@@ -91,7 +96,8 @@ size_t file_coder::get_data_file(size_t part_size, QString path) {
     QFileInfo work_file_info(path);
     file_name = work_file_info.fileName();
     file_size = work_file_info.size();
-    part_count = file_size / part_size;
+    part_size = file_size / part_count;
+
     work_file.close();
     return 0;
 }
@@ -100,8 +106,8 @@ qint64 file_coder::return_file_size() {
     return file_size;
 }
 
-size_t file_coder::return_part_count() {
-    return part_count;
+size_t file_coder::return_part_size() {
+    return part_size;
 }
 
 QString file_coder::return_file_name() {

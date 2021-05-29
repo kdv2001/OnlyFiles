@@ -22,9 +22,9 @@ void download_window::on_cancel_button_clicked() {
 }
 
 
-void download_window::set_progress_bar(int parts, size_t file_size, size_t part_size) {
-    double coef = static_cast<double>(part_size)/static_cast<double>(file_size);
-    size_t file_progress = parts * 100 * coef;
+void download_window::set_progress_bar(int parts, size_t part_count) {
+    double coef = static_cast<double>(parts)/static_cast<double>(part_count);
+    size_t file_progress = coef * 100;
 
     ui->progressBar->setValue(file_progress);
 }

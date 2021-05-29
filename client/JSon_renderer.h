@@ -20,12 +20,12 @@ private:
     void remove_n();
 
 public:
-    QByteArray JSon_request_11(int file_Size, int part_size, QString file_name, std::string hash);
+    QByteArray JSon_request_11(int file_size, int part_count, QString file_name, std::string hash);
     QByteArray JSon_request_12(int part_num, QString token);
     QByteArray JSon_request_13(QString token);
-    QByteArray JJSon_request_21(QString file_number, QString pin);
-    QByteArray JJSon_request_22(QString file_number, QString pin, int part_size, int part_num, int file_size);
-    QByteArray JJSon_request_23(QString token, int part_num);
+    QByteArray JSon_request_21(QString file_number, QString pin);
+    QByteArray JSon_request_22(QString file_number, QString pin, int part_size, int part_num, int file_size);
+    QByteArray JSon_request_23(QString token, int part_num);
 
     Json();
     //~Json();

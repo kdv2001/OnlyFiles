@@ -60,34 +60,44 @@ public:
     QString get_ui_pin; //get pin from ui
     QString get_ui_file_number; //get file number from ui
     QString path_to_file; //get path to file from ui
-    QJsonArray parts_to_upload;
+
+    QJsonArray parts_to_upload;//upload_parts
     QTcpSocket* socket;
-    QByteArray data;
-    QString token;
+    QByteArray data;//get json from server
+    QString token;// token
+    QJsonParseError json_doc_error;//json error
+    QJsonDocument json_doc;//json
+
     int action;
-    QJsonParseError json_doc_error;
-    QJsonDocument json_doc;
+
     download_window *load_window;
     file_coder *file;
     Json *json;
-    size_t part_size;
+
 
 public slots:
     void sock_ready();
     void sock_disk();
-    void on_pushButton_clicked();
+    void on_change_download_clicked();
+    void on_change_upload_clicked();
+
+    void on_start_download_clicked();
+    void on_button_check_file_clicked();
+
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void send_files();
     void get_path();
-    void print_get_file_data(QString data);
     void move_home();
     void set_action_cancel();
     void get_pin_from_ui();
     void get_file_number_from_ui();
+    void start_download_file();
+    void move_upload();
 
 signals:
     void start_send();
+    void start_download();
 };
 
 

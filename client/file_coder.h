@@ -17,15 +17,16 @@ class file_coder {
 public:
     file_coder();
     ~file_coder();
-    size_t code_file(QString token, size_t part_size, QString path);
+    size_t code_file(QString token, QString path);
     qint64 return_file_size();
-    size_t return_part_count();
+    size_t return_part_size();
     QString return_file_name();
-    size_t get_data_file(size_t part_size, QString path);
+    size_t get_data_file(size_t part_count, QString path);
     void set_file_coder();
     QString return_file_path();
     bool delete_time_derectory(QString path_to_file);
-    size_t decode_file(QString token, size_t part_size, QString path);
+
+    size_t get_file_part(QString token, size_t part_size, QByteArray data);
 
 private:
     QString work_derektory;
@@ -33,6 +34,7 @@ private:
     QString file_name;
     qint64 file_size;
     size_t part_count;
+    size_t part_size;
 };
 
 

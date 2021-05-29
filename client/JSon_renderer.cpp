@@ -13,12 +13,12 @@ void Json::remove_n() {
 //    form.remove(form.indexOf('\n',0), 1);
 }
 
-QByteArray Json::JSon_request_11(int file_Size, int part_size, QString file_name, std::string hash) {
+QByteArray Json::JSon_request_11(int file_size, int part_count, QString file_name, std::string hash) {
     QJsonObject record_Object;
     record_Object.insert("action", 11);
-    record_Object.insert("file_size", file_Size);
-    record_Object.insert("part_size", part_size);
-    record_Object.insert("part_num", file_Size / part_size);
+    record_Object.insert("file_size", file_size);
+    record_Object.insert("part_size", file_size/part_count);
+    record_Object.insert("part_num", part_count);
     record_Object.insert("file_name", file_name);
     record_Object.insert("uniq", QString::fromStdString(hash));
     QJsonDocument doc(record_Object);
@@ -49,7 +49,7 @@ QByteArray Json::JSon_request_13(QString token) {
     return form;
 }
 
-QByteArray Json::JJSon_request_21(QString file_number, QString pin) {
+QByteArray Json::JSon_request_21(QString file_number, QString pin) {
     QJsonObject record_Object;
     record_Object.insert("action", 21);
     record_Object.insert("file_number", file_number);
@@ -59,7 +59,7 @@ QByteArray Json::JJSon_request_21(QString file_number, QString pin) {
     return form;
 }
 
-QByteArray Json::JJSon_request_22(QString file_number, QString pin, int part_size, int part_num, int file_size) {
+QByteArray Json::JSon_request_22(QString file_number, QString pin, int part_size, int part_num, int file_size) {
     QJsonObject record_Object;
     record_Object.insert("action", 22);
     record_Object.insert("file_number", file_number);
@@ -72,7 +72,7 @@ QByteArray Json::JJSon_request_22(QString file_number, QString pin, int part_siz
     return form;
 }
 
-QByteArray Json::JJSon_request_23(QString token, int part_num) {
+QByteArray Json::JSon_request_23(QString token, int part_num) {
     QJsonObject record_Object;
     record_Object.insert("action", 23);
     record_Object.insert("token", token);
