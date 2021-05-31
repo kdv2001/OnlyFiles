@@ -83,7 +83,27 @@ size_t file_coder::code_file(QString token, QString path){
 }
 
 size_t file_coder::get_file_part(QString token, size_t part_size, QByteArray data) {
-    data.toStdString();
+    while(data.toStdString().at(0) != '}') {
+        data.toStdString().erase(0,1);
+    }
+    //QDir get_derektory = QCoreApplication::applicationDirPath() + "/get_file/" + token;
+    QDir dir(QCoreApplication::applicationDirPath() + "/get_file/" + token);
+    if(!dir.exists())
+    {
+        qDebug() << "Creating " << QCoreApplication::applicationDirPath() + "/get_file/" + token << "directory";
+        dir.mkpath(QCoreApplication::applicationDirPath() + "/get_file/" + token);
+    }
+    else
+    {
+        qDebug() <<  QCoreApplication::applicationDirPath() + "/get_file/" + token << " already exists";
+    }
+    QFile work_file(QCoreApplication::applicationDirPath() + "/get_file/" + token); //+ ".bin"
+    //std::ifstream open_file;
+    if(!(work_file.open(QIODevice::ReadOnly))) {
+        qDebug() << "cant found file";
+        return -1;
+    }
+    QDataStream stream(&work_file);
     return 0;
 }
 

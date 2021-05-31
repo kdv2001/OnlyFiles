@@ -133,20 +133,19 @@ void MainWindow::sock_ready() {
 
     if ((action == REQUEST_DOWNLOAD_PART) && !(json_doc.object().value("partstoupload") == 0)) {
         parts_to_upload = json_doc.object().value("partstoupload").toArray();
-        file->get_file_part(token,file_size/(ui->horizontalSlider_2->value()), data);
+        //file->get_file_part(token,file_size/(ui->horizontalSlider_2->value()), data);
         socket->write(json->JSon_request_23(token, parts_to_upload.at(0).toInt()));
-        qDebug() << socket->write(json->JSon_request_23(token, parts_to_upload.at(0).toInt()));
-
+        qDebug() << socket->write(json->JSon_request_23(token, parts_to_upload.at(0).toInt())) << "what";
+        qDebug() << "valid json 23";
     }
 
     if((action == REQUEST_DOWNLOAD_FILE) && !(json_doc.object().value("token").isNull())) {
         token = json_doc.object().value("token").toString();
         parts_to_upload = json_doc.object().value("partstoupload").toArray();
-        qDebug() << "valid json 23";
 
         action = REQUEST_DOWNLOAD_PART;
         socket->write(json->JSon_request_23(token, parts_to_upload.at(0).toInt()));
-        qDebug() << json->JSon_request_23(token, parts_to_upload.at(0).toInt());
+        qDebug() << json->JSon_request_23(token, parts_to_upload.at(0).toInt()) << "first 23";
 
     }
 }
