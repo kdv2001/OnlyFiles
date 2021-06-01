@@ -54,6 +54,8 @@ public:
     QString file_name;
     QString hash;
     size_t file_size;
+    size_t part_requsts;
+    bool json_readed;
 
     QString pin; //get pin from server
     QString file_number; //get file number from server

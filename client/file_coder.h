@@ -24,11 +24,15 @@ public:
     size_t get_data_file(size_t part_count, QString path);
     void set_file_coder();
     QString return_file_path();
-    bool delete_time_derectory(QString path_to_file);
+    bool delete_trans_derectory();
+    bool delete_get_derectory();
 
-    size_t get_file_part(QString token, size_t part_size, QByteArray data);
+    size_t linker_file(int part_count, QString file_name);
+    size_t get_file_part(QString token, size_t part_size, QByteArray data, int part_num);
+    size_t find_end_of_json(QByteArray data_string);
 
 private:
+    QString get_derektory;
     QString work_derektory;
     bool file_is_coder = 0;
     QString file_name;

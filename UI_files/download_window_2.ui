@@ -385,7 +385,7 @@
       <rect>
        <x>10</x>
        <y>107</y>
-       <width>311</width>
+       <width>621</width>
        <height>41</height>
       </rect>
      </property>
@@ -395,7 +395,7 @@
       </font>
      </property>
      <property name="placeholderText">
-      <string>                             Pin</string>
+      <string>                                                                  Pin</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="line_file_number">
@@ -403,7 +403,7 @@
       <rect>
        <x>10</x>
        <y>48</y>
-       <width>311</width>
+       <width>621</width>
        <height>41</height>
       </rect>
      </property>
@@ -418,6 +418,9 @@
        <pointsize>14</pointsize>
       </font>
      </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="inputMask">
       <string extracomment="pin"/>
      </property>
@@ -425,7 +428,7 @@
       <string extracomment="Pin"/>
      </property>
      <property name="placeholderText">
-      <string>                    File number</string>
+      <string>                                                          File number</string>
      </property>
     </widget>
     <widget class="QPushButton" name="start_download">
@@ -481,8 +484,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>222</y>
-       <width>301</width>
+       <y>228</y>
+       <width>611</width>
        <height>41</height>
       </rect>
      </property>
@@ -496,37 +499,12 @@
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QTableWidget" name="tableWidget">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>30</y>
-       <width>301</width>
-       <height>221</height>
-      </rect>
-     </property>
-     <column>
-      <property name="text">
-       <string>file name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>file number</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>pin</string>
-      </property>
-     </column>
-    </widget>
     <widget class="QLabel" name="label_file_name">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>315</y>
-       <width>521</width>
+       <x>270</x>
+       <y>170</y>
+       <width>361</width>
        <height>41</height>
       </rect>
      </property>
@@ -542,8 +520,8 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>15</x>
-       <y>313</y>
+       <x>170</x>
+       <y>170</y>
        <width>91</width>
        <height>41</height>
       </rect>
@@ -561,8 +539,8 @@
      <property name="geometry">
       <rect>
        <x>12</x>
-       <y>263</y>
-       <width>171</width>
+       <y>281</y>
+       <width>191</width>
        <height>50</height>
       </rect>
      </property>
@@ -589,7 +567,7 @@
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
-          <pointsize>13</pointsize>
+          <pointsize>14</pointsize>
          </font>
         </property>
         <property name="text">
