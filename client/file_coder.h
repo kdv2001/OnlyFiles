@@ -37,7 +37,7 @@ private:
     bool file_is_coder = 0;
     QString file_name;
     qint64 file_size;
-    size_t part_count;
+    size_t part_count_file;
     size_t part_size;
 };
 

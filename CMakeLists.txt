@@ -20,6 +20,8 @@ enable_testing()
 
 include_directories(image)
 
+SET(RESOURCES resurs.qrc)
+
 set(MOC_HEADERS
         client/main_window.h
         client/JSon_renderer.h
@@ -37,14 +39,15 @@ set(UIS
 add_executable(
         OnlyFiles
 
-        client/main.cpp
-        client/download_window.cpp
         client/main_window.cpp
         client/JSon_renderer.cpp
         client/file_coder.cpp
+        client/main.cpp
+        client/download_window.cpp
         client/md5.cpp
         client/md5wrapper.cpp
 
+        ${RESOURCES}
         ${MOC_HEADERS}
 
         ${UI_HEADERS}

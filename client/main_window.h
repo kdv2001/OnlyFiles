@@ -26,6 +26,7 @@
 #include <QStackedWidget>
 #include <QBoxLayout>
 #include <QThread>
+#include <QHostAddress>
 
 #define OK 0 //status ok
 #define NOT_OK 1 //status ne ok
@@ -51,6 +52,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    volatile bool cancel_cliked;
     QString file_name;
     QString hash;
     size_t file_size;

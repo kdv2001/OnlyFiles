@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>image/down-arrow.png</file>
+    <file>image/folder.png</file>
+    <file>image/right-arroww.png</file>
+    <file>image/up-arrow.png</file>
+    <file>image/imgonline-com-ua-Resize-VhJATHpkp1ZGOjew (1).png</file>
+  </qresource>
+  <qresource prefix="newPrefix"/>
+</RCC>

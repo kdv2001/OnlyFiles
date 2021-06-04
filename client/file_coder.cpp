@@ -120,9 +120,9 @@ size_t file_coder::get_data_file(size_t part_count, QString path) {
     file_name = work_file_info.fileName();
     file_size = work_file_info.size();
     part_size = file_size / part_count;
-
+    size_t new_part_count = file_size/part_size;
     work_file.close();
-    return 0;
+    return new_part_count;
 }
 
 qint64 file_coder::return_file_size() {
