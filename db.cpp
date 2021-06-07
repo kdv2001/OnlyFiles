@@ -101,7 +101,7 @@ void of::db::execute() {
 
 void of::db::init_db() {
     query_ = "CREATE TABLE stored_files(id INTEGER PRIMARY KEY, filename TEXT, filesize INTEGER, secret TEXT, md5 TEXT, token TEXT, time TEXT);"
-             "CREATE TABLE active_files(md5 TEXT, filename TEXT, filesize INTEGER, partnums INTEGER, partsize INTEGER, token TEXT, partremain TEXT, time TEXT);";
+             "CREATE TABLE active_files(md5 TEXT, filename TEXT, filesize INTEGER, partnums INTEGER, partsize INTEGER, token TEXT, partremain TEXT, time TEXT, download INTEGER);";
     execute();
 }
 
@@ -153,7 +153,7 @@ std::string of::db::get_remain_parts_r(std::vector<size_t> &input) {
 }
 
 void of::db::add_active_file(of::file_info& info) {
-    query_ = "SELECT * FROM active_files WHERE md5='" + info.hash + "' AND filesize=" + size_to_str(info.filesize)+";";
+    query_ = format("SELECT * FROM active_files WHERE md5='%s' AND filesize=%d AND partsize=%d AND download=%d;", info.hash.c_str(), info.filesize, info.partsize, info.active_type);
     execute();
     if(!select_res_.empty()){
         info.partnums = std::stoul(select_res_[0]["partnums"]);
@@ -166,6 +166,12 @@ void of::db::add_active_file(of::file_info& info) {
     std::string token;
     do{
         token = generate_random_number(8);
+        query_ = format("SELECT * FROM stored_files WHERE token='%s'", token.c_str());
+        execute();
+        if(!select_res_.empty()){
+            continue;
+        }
+
         query_ = format("SELECT * FROM active_files WHERE token='%s'", token.c_str());
         execute();
     } while (!select_res_.empty());
@@ -181,9 +187,9 @@ void of::db::add_active_file(of::file_info& info) {
 
     auto current_time = time(NULL);
 
-    query_ = format("INSERT INTO active_files(md5, filename, filesize, partnums, partsize, token, partremain, time) VALUES ('%s', '%s', %d, %d, %d, '%s', '%s', '%s')",
+    query_ = format("INSERT INTO active_files(md5, filename, filesize, partnums, partsize, token, partremain, time, download) VALUES ('%s', '%s', %d, %d, %d, '%s', '%s', '%s', '%s')",
                     info.hash.c_str(), info.filename.c_str(), info.filesize, info.partnums, info.partsize, token.c_str(),
-                    get_remain_parts_r(info.partremain).c_str(), size_to_str(current_time).c_str());
+                    get_remain_parts_r(info.partremain).c_str(), size_to_str(current_time).c_str(), size_to_str(info.active_type).c_str());
     execute();
     info.token = token;
 
@@ -224,9 +230,16 @@ void of::db::get_or_set_file_part(part_info &part, bool update_db) {
     query_ = format("SELECT * FROM active_files WHERE token='%s'", part.token.c_str());
     execute();
     if(select_res_.empty()){
+        part.active_type = ERROR;
         part.partsize = 0;
         return;
     }
+    if(part.active_type != std::stoul(select_res_[0]["download"])){
+        part.partsize = 0;
+        part.active_type = ERROR;
+        return;
+    }
+
     std::vector<size_t> parts_db = get_remain_parts(select_res_[0]["partremain"]);
 
     bool erased = false;
@@ -239,6 +252,7 @@ void of::db::get_or_set_file_part(part_info &part, bool update_db) {
     }
     if(!erased){
         part.partsize = 0;
+        part.active_type = ERROR;
         return;
     }
 
@@ -335,9 +349,17 @@ void of::db::add_stored_file(file_info &file) {
 }
 
 void of::db::get_stored_file_info(const std::string &token, file_secret& secret) {
-    query_ = format("SELECT id, secret FROM stored_files WHERE token = '%s'", token.c_str());
+    query_ = format("SELECT id, secret, time FROM stored_files WHERE token = '%s'", token.c_str());
     execute();
     if(select_res_.empty()){
+        secret.id = -1;
+        return;
+    }
+
+    size_t time_now = time(NULL);
+    size_t time_added = std::stoul(select_res_[0]["time"]);
+
+    if(time_now - time_added > TIME_TO_GET_FILE_SECRETS_IN_SECS){
         secret.id = -1;
         return;
     }
@@ -346,4 +368,50 @@ void of::db::get_stored_file_info(const std::string &token, file_secret& secret)
     secret.secret = select_res_[0]["secret"];
 }
 
+void of::db::remove_stored_file(const file_info& file) {
+    query_ = format("DELETE FROM stored_files WHERE token='%s' AND md5='%s'", file.token.c_str(), file.hash.c_str());
+    execute();
+}
 
+void of::db::get_stored_file_info_by_secret(file_info &file_inf, const file_secret &secret) {
+    query_ = format("SELECT * FROM stored_files WHERE id = %lu AND secret = '%s'", secret.id, secret.secret.c_str());
+    execute();
+
+    if(select_res_.empty()){
+        file_inf.filesize = 0;
+        return;
+    }
+
+    file_inf.filename = select_res_[0]["filename"];
+    file_inf.filesize = std::stoul(select_res_[0]["filesize"]);
+    file_inf.hash = select_res_[0]["md5"];
+    file_inf.token = select_res_[0]["token"];
+
+}
+
+void of::db::clear_active_files(std::vector<std::string>& deleted_tokens) {
+    query_ = format("SELECT * FROM active_files");
+    execute();
+
+    for(size_t i = 0; i < select_res_.size(); ++i){
+        if(select_res_[i]["partremain"].empty() && std::stoul(select_res_[i]["download"]) == DOWNLOAD){
+            query_ = format("DELETE FROM active_files WHERE token = '%s'", select_res_[i]["token"].c_str());
+            execute();
+            deleted_tokens.push_back(select_res_[i]["token"]);
+        }
+    }
+}
+
+void of::db::add_not_uploaded_part(const part_info &inf) {
+    query_ = format("SELECT * FROM active_files WHERE token='%s'", inf.token.c_str());
+    execute();
+    std::vector<size_t> parts_uploaded = get_remain_parts(select_res_[0]["partremain"]);
+    for(size_t i = 0; i < 2; ++i){
+        if(inf.partcount - i < 500){
+            parts_uploaded.push_back(inf.partcount - i);
+        }
+    }
+    std::string parts_modified = get_remain_parts_r(parts_uploaded);
+    query_ = format("UPDATE active_files SET partremain = '%s' WHERE token='%s'", parts_modified.c_str(), inf.token.c_str());
+    execute();
+}

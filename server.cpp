@@ -10,6 +10,7 @@ of::session::session(boost::asio::io_context &io_context, of::logic &logic_obj)
 
     json_proc_data.db_to_operate.set_db_ptr(logic_.get_master_db_ptr());
     json_proc_data.glue_needing = false;
+    json_proc_data.error = false;
     buffer_str_capacity = BUFFER_LENGHT;
     bufferStr.resize(buffer_str_capacity);
 }
@@ -183,10 +184,11 @@ void of::session::handle_read(const boost::system::error_code &error,
                                                      json_proc_data.ouput_str.length()),
                                  boost::bind(&session::handle_write, this,
                                              boost::asio::placeholders::error));
-        json_proc_data.input_json.clear();
+        //json_proc_data.input_json.clear();
         json_proc_data.input_str.clear();
         data_string.clear();
     } else {
+        logic_.add_not_downloaded_part(json_proc_data);
         delete this;
     }
 }

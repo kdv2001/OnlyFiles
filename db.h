@@ -6,11 +6,19 @@
 #include <map>
 #include "sqlite/sqlite3.h"
 
+#define TIME_TO_GET_FILE_SECRETS_IN_SECS 60
+
 namespace of {
     typedef struct{
         size_t id;
         std::string secret;
     }file_secret;
+
+    typedef enum {
+        UPLOAD,
+        DOWNLOAD,
+        ERROR
+    }active_type_en;
 
     typedef struct{
         std::string filename;
@@ -18,6 +26,7 @@ namespace of {
         size_t filesize;
         size_t partsize;
         size_t partnums;
+        active_type_en active_type;
 
         std::string token;
         std::vector<size_t> partremain;
@@ -27,6 +36,7 @@ namespace of {
         size_t partsize;
         size_t partcount;
         std::string token;
+        active_type_en active_type;
     }part_info;
 
     class db {
@@ -42,11 +52,17 @@ namespace of {
 
         void add_active_file(file_info& file);
         void add_stored_file(file_info& file);
+        void remove_stored_file(const file_info& file);
         void get_active_file_info(file_info& file, bool remove = false);
         void get_stored_file_info(const std::string& token, file_secret& secret);
         void get_or_set_file_part(part_info& part, bool update_db);
         void get_file_hash(const std::string& token, std::string& file_hash);
         void get_remain_parts_of_file(const std::string& token, std::vector<size_t>& part_remain);
+        void add_not_uploaded_part(const part_info&);
+
+        void clear_active_files(std::vector<std::string>& deleted_tokens);
+
+        void get_stored_file_info_by_secret(file_info& file_info, const file_secret& secret);
 
         //void get_file_part_info(part_info& part);
 
